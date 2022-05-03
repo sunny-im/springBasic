@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="'안뇽안뇽' + ${name}">실제 서버를 돌리면 안보이지롱...</p>
+<!--웹브라우저에서 localhost:8080/hello-mvc를 요청하면 내장톰캣서버에서 스프링으로 전달!-->
+<!--컨트롤러에서 메소드 호출하고 hello-template를 리턴, 그리고 viewResolver가 변환해서 웹브라우저로 전달 @-->
+</body>
+</html>

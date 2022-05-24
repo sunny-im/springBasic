@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
@@ -22,7 +23,7 @@ class MemberServiceTest {
         Long saveId = memberService.join(member);
         // then
         Member findMember = memberService.findOne(saveId).get();
-        Assertions.assertThat(member.getName()).isEqualTo(findMember.getName());
+        assertThat(member.getName()).isEqualTo(findMember.getName());
     }
 
     @Test
@@ -36,13 +37,13 @@ class MemberServiceTest {
         // when
         memberService.join(member1);
         // 하단에 try-catch문을 진행하지 않고 하는 방법
-        // 람다함수 부분 (memberService.join(member2)가 실행되면 IllegalAccessError 예외가 발생)
-        Assertions.assertThrows(IllegalAccessError.class, () -> memberService.join(member2));
+        // 람다함수 부분 (memberService.join(member2)가 실행되면 IllegalStateException 예외가 발생)
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 //        try {
 //            memberService.join(member2);
 //            fail();
 //        } catch (IllegalStateException e) {
-//            Assertions.assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+//            assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 //        }
         // then
     }
